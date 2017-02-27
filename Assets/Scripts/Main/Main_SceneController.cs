@@ -70,9 +70,10 @@ public class Main_SceneController : MonoBehaviour
             else if (rand < 11)
             {
                 // ウイルス出現（パターン１）
-                for (var i = 0; i < 10; i++)
+                var y = Random.Range(4.5f, 6.5f);
+                for (var i = 0; i < Random.Range(5, 11); i++)
                 {
-                    var enemy = Instantiate(enemySimplePrefab, new Vector3(3f, 6f), Quaternion.identity);
+                    var enemy = Instantiate(enemySimplePrefab, new Vector3(3f, y), Quaternion.identity);
                     enemy.Life = 1 + player.StraightShotLevel / 3;
                     enemy.velocity = new Vector2(-1f, -1f);
                     enemies.Add(enemy);
@@ -82,9 +83,10 @@ public class Main_SceneController : MonoBehaviour
             else if (rand < 21)
             {
                 // ウイルス出現（パターン２）
-                for (var i = 0; i < 10; i++)
+                var y = Random.Range(4.5f, 6.5f);
+                for (var i = 0; i < Random.Range(5, 11); i++)
                 {
-                    var enemy = Instantiate(enemySimplePrefab, new Vector3(-3f, 6f), Quaternion.identity);
+                    var enemy = Instantiate(enemySimplePrefab, new Vector3(-3f, y), Quaternion.identity);
                     enemy.Life = 1 + player.StraightShotLevel / 3;
                     enemy.velocity = new Vector2(1f, -1f);
                     enemies.Add(enemy);
@@ -98,7 +100,7 @@ public class Main_SceneController : MonoBehaviour
                 for (var i = 0; i < spawnAmount; i++)
                 {
                     var enemy = Instantiate(enemyOneShotEscapePrefab, new Vector3(-2f + i * 4f / spawnAmount, 6f), Quaternion.identity);
-                    enemy.Life = 10 + player.StraightShotLevel;
+                    enemy.Life = 6 + player.StraightShotLevel;
                     enemies.Add(enemy);
                 }
             }
@@ -109,7 +111,7 @@ public class Main_SceneController : MonoBehaviour
                 for (var i = 0; i < spawnAmount; i++)
                 {
                     var enemy = Instantiate(enemyHomingPrefab, new Vector3(Random.Range(-3f, 3f), 6f), Quaternion.identity);
-                    enemy.Life = 5 + player.StraightShotLevel / 2;
+                    enemy.Life = 2 + player.StraightShotLevel / 2;
                     enemy.speed = 1f + player.StraightShotLevel * 0.05f;
                     enemies.Add(enemy);
                     yield return new WaitForSeconds(0.3f);
